@@ -1,11 +1,10 @@
-import BaseWidgetContainer from "./base/WidgetContainer";
 import React from "react";
 import PrimaryButton from "./base/PrimaryButton";
 import { evaluate } from "mathjs";
-import { defaults } from "./SpreadsheetDefaults";
-export default function ValuationSpreadsheet({ condoData }) {
-  // Can override to take array of arrays in props instead
-  const initialData = defaults;
+
+export default function ValuationSpreadsheet({ data }) {
+
+  const initialData = data;
 
   // REGEXES
   const cellReferenceRegex = /(?!-)(\$?[A-Z]{1,2}\$?\d+)|^[rc]$/gm;
@@ -274,7 +273,7 @@ export default function ValuationSpreadsheet({ condoData }) {
   }
 
   return (
-    <BaseWidgetContainer>
+    <div>
       <PrimaryButton
         id="export-btn"
         text="Export Spreadsheet"
@@ -282,6 +281,6 @@ export default function ValuationSpreadsheet({ condoData }) {
         onClick={() => onExportClicked()}
       />
       <div id="spreadsheet-container"></div>
-    </BaseWidgetContainer>
+    </div>
   );
 }
